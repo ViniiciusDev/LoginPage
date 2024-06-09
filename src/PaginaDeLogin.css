@@ -169,6 +169,10 @@
     font-size: 13px;
 }
 
+.container-links ul li a img {
+    padding: 10px;
+}
+
 /* Estilos do texto do container de links */
 .container-links__texto {
     font-size: 15px;
@@ -180,6 +184,7 @@
 .container-links__link {
     color: var(--verde-destaque);
     font-size: 18px;
+    text-decoration: none;
 }
 
 .container-links__link::after {

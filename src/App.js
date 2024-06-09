@@ -2,6 +2,8 @@ import "./App.css";
 import "./PaginaDeLogin.css";
 import "./CampoDeDigitacao.css";
 import ImageLogin from "./img/imagem-login.png";
+import ImageGithub from "./img/Github.svg";
+import ImageGoogle from "./img/Google.svg";
 import { useState } from "react";
 
 function App() {
@@ -12,6 +14,10 @@ function App() {
     // Componente Subtitulo
     function Subtitulo() {
         return <h3 className="form__texto">Boas-vindas! Faça seu login.</h3>;
+    }
+    // Componente Texto
+    function Texto({ classe, children }) {
+        return <p className={classe}>{children}</p>;
     }
     // Componente Campo de Digitação
     function CampoDeDigitacao({ label, type, placeholder, value, setValue }) {
@@ -32,6 +38,37 @@ function App() {
     // Componente Button
     function Botao() {
         return <button className="form__botao">Login</button>;
+    }
+    // Componente Checkbox
+    function Checkbox() {
+        return (
+            <>
+                <div className="form__campo-checkbox">
+                    <input type="checkbox" id="lembrar" />
+                    <label for="lembrar"></label>
+                </div>
+                <p className="form__opcoes-texto">Lembrar-me</p>
+            </>
+        );
+    }
+    // Itens Redes Sociais
+    function ItemRedeSociais({ link, nome, image }) {
+        return (
+            <li>
+                <a href={link}>
+                    <img src={image} alt={`Icone do ${nome}`} />
+                    {nome}
+                </a>
+            </li>
+        );
+    }
+    // Componente Link
+    function Link({ children }) {
+        return (
+            <a href="index" className="container-links__link">
+                {children}
+            </a>
+        );
     }
     // Componente Pagina de Login
     function PaginaDeLogin() {
@@ -68,8 +105,41 @@ function App() {
                             value={senha}
                             setValue={setSenha}
                         />
+                        <fieldset className="form__opcoes">
+                            <Checkbox />
+                            <p>
+                                <a
+                                    href="index"
+                                    aria-label="Esqueciemento da senha"
+                                >
+                                    {" "}
+                                    Esqueci a senha
+                                </a>
+                            </p>
+                        </fieldset>
                         <Botao />
                     </form>
+                    <div className="container-links">
+                        <Texto classe="container-links__titulo">
+                            ou entre com outras contas
+                        </Texto>
+                        <ul>
+                            <ItemRedeSociais
+                                link="https://www.github.com"
+                                nome="Github"
+                                image={ImageGithub}
+                            />
+                            <ItemRedeSociais
+                                link="https://www.google.com"
+                                nome="Google"
+                                image={ImageGoogle}
+                            />
+                        </ul>
+                        <Texto classe="container-links__texto">
+                            Ainda não tem conta?
+                        </Texto>
+                        <Link>Crie seu Cadastro!</Link>
+                    </div>
                 </section>
             </div>
         );
